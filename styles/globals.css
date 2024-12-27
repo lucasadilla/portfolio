@@ -1,0 +1,470 @@
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    0%, 100% { border-color: white; }
+    50% { border-color: transparent; }
+}
+
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 4s steps(30, end) 1s forwards, blink 0.75s step-end infinite;
+    border-right: 3px solid white;  /* Makes the cursor more visible */
+    box-sizing: border-box;
+}
+
+/* Ensure text styles are not affected by typewriter class */
+header a {
+    font-size: 70px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: white;
+    margin-top: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #000000, #1c1c1c);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    text-align: center;
+}
+
+.subheader {
+    text-align: center;
+    margin-top: 0; /* Adjust margin to position text correctly */
+}
+
+section {
+    max-width: 900px;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: #ffffff;
+    font-size: 70px;
+    margin: 15px auto;
+}
+
+h3 {
+    color: #ffffff;
+    font-size: 15px;
+}
+
+h4 {
+    color: #ffffff;
+    font-size: 20px;
+    margin: 10px auto; /* Adjusted margin */
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 70px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center; /* Center the list */
+    margin: 10px 0 0 0; /* Adjust margin to be closer to the text above */
+}
+
+ul li {
+    margin: 5px 49px; /* Increase margin to add more space between buttons */
+    padding: 5px; /* Adjust padding to make buttons smaller */
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.home-button {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px; /* Keep original size for the main button */
+    border: 2px solid #fff;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.small-button {
+    font-size: 28px; /* Adjust font size to make buttons smaller */
+    padding: 5px 10px; /* Adjust padding to make buttons smaller */
+}
+
+.home-button:hover, .small-button:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+/* New styles for images */
+img.logo {
+    max-width: 200px;
+    height: auto;
+    margin-top: 20px;
+}
+
+img.feature-image, img.technology-image {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    padding: 20px 0;
+    margin-top: auto;
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.1s ease-out;
+    z-index: 9999;
+    background-color: rgba(255, 255, 255, 0); /* This is the cursor itself */
+}
+
+.cursor::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    backdrop-filter: invert(1); /* Apply inversion effect */
+}
+
+.tilt {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    will-change: transform;
+    transition: transform 0.3s ease;
+}
+
+.tilt:hover {
+    transform: scale(1.05);
+}
+
+img.feature-image {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+video.feature-video {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 20px auto;
+    max-width: 1800px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.modal-video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+
+.video-grid .tilt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 20px auto;
+    max-width: 900px;
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.carousel-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.arrow {
+    background: none;
+    border: none;
+    font-size: 56px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    z-index: 20;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: color 0.3s ease;
+}
+
+.arrow.left-arrow {
+    left: -90px; /* Adjust distance from the image */
+}
+
+.arrow.right-arrow {
+    right: -90px; /* Adjust distance from the image */
+}
+
+.arrow:hover {
+    color: rgba(74, 241, 33, 0.8);
+}
+
+.centered-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: auto;
+    background: linear-gradient(135deg, #000000, #1c1c1c); /* Background gradient */
+    color: white;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Typewriter container to align text and cursor */
+.typewriter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* Typewriter text */
+#typewriter {
+    font-size: 4rem; /* Adjust font size */
+    font-family: 'Inter', sans-serif;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5; /* Matches cursor height with text */
+    transition: color 0.3s ease;
+}
+
+/* Blinking cursor */
+.typewriter-cursor {
+    font-size: 4rem; /* Match text font size */
+    color: white;
+    animation: blink 0.75s step-end infinite;
+    margin-left: 5px; /* Add space between text and cursor */
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.typewriter-box {
+    display: inline-block;
+    padding: 15px 25px; /* Adjust padding to make the box fit */
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 0; /* Ensure no external margin is applied */
+    line-height: 1.2; /* Prevent extra space within the box */
+}
+
+.typewriter-box:hover {
+    background-color: white; /* On hover, fill background */
+}
+
+.typewriter-box:hover #typewriter {
+    color: black; /* Change text to black on hover */
+}
+
+
+.subheader {
+    font-size: 1.2rem;
+    color: white;
+    margin: 0; /* Remove extra margins to keep it close to the typewriter */
+    padding: 0;
+    text-align: center;
+}
+
+.link-list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+.link-list li {
+    margin: 0; /* Remove extra margins */
+}
+
+.home-button {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: white;
+    color: black;
+}
+
+#typewriter-link {
+    text-decoration: none; /* Remove underline */
+    color: white; /* Match text color */
+}
+
+#typewriter-link:hover {
+    opacity: 0.8; /* Subtle hover effect */
+    cursor: pointer;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    flex-grow: 1; /* Take up remaining space */
+    text-align: center;
+}
+
+.header-title {
+    font-size: 4rem; /* Adjust as needed */
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-icon {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    margin: 0 10px; /* Adjust spacing as needed */
+    transition: transform 0.3s ease;
+    filter: invert(1);
+}
+
+.footer-icon:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.content-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.text-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}

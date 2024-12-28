@@ -5,14 +5,14 @@ export default function Debate() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const images = [
-        "/images/Screenshot 2024-12-26 172742.png",
-        "/images/Screenshot 2024-12-26 172802.png",
-        "/images/Screenshot 2024-12-26 172838.png",
-        "/images/Screenshot 2024-12-26 172911.png",
-        "/images/Screenshot 2024-12-26 173011.png",
-        "/images/Screenshot 2024-12-26 173052.png",
-        "/images/Screenshot 2024-12-26 172534.png",
-        "/images/Screenshot 2024-12-26 172651.png"
+        "/images/index.png",
+        "/images/index2.png",
+        "/images/pub.png",
+        "/images/media.png",
+        "/images/book.png",
+        "/images/contact.png",
+        "/images/invite.png",
+        "/images/search.png"
     ];
 
     const nextImage = () => {
@@ -41,23 +41,21 @@ export default function Debate() {
     return (
         <div>
             <Header />
-            <section>
-                <h2>Amir Raz Website</h2>
-            </section>
             <section className="carousel">
                 <div className="carousel-container">
                     <button className="arrow left-arrow" onClick={prevImage}>
-                        &lt;
+                        <i></i><i></i>
                     </button>
                     <div className="tilt">
                         <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="carousel-image" />
                     </div>
                     <button className="arrow right-arrow" onClick={nextImage}>
-                        &gt;
+                        <i></i><i></i>
                     </button>
                 </div>
             </section>
             <section>
+                <a href="www.amiraz.com" className="thing">Check out the site</a>
                 <h2>Technologies Utilized</h2>
                 <h3>JavaScript · CSS · HTML · Next.js · Node.js · Vercel</h3>
                 <a href="https://github.com/lucasadilla/raz" className="home-button">GitHub Repository</a>

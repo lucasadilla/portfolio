@@ -8,12 +8,6 @@ export default function Personal() {
                 <a href="/" className="home-button">Lucas Pentland-Hyde</a>
             </Header>
             <section>
-                <h2>Personal Website</h2>
-                <div className="subheader">
-                    <h4>To showcase my work</h4>
-                </div>
-            </section>
-            <section>
                 <h4>Tried new front-end development methods, such as:</h4>
                 <h4>Creating animation using CSS and JavaScript.</h4>
             </section>

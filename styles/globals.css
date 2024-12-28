@@ -71,13 +71,14 @@ section {
 
 h2 {
     color: #ffffff;
-    font-size: 70px;
+    font-size: 40px;
     margin: 15px auto;
 }
 
 h3 {
     color: #ffffff;
     font-size: 15px;
+    margin-bottom: 10px;
 }
 
 h4 {
@@ -114,10 +115,19 @@ ul li {
 .home-button {
     color: #fff;
     text-decoration: none;
+    margin-top: 20px !important;
     padding: 10px 20px; /* Keep original size for the main button */
     border: 2px solid #fff;
     border-radius: 5px;
     align-items: center;
+}
+
+.thing{
+    color: #fff;
+    text-decoration: none;
+}
+.thing:hover{
+    color: #52ff16;
 }
 
 .small-button {
@@ -395,10 +405,11 @@ video.feature-video {
 
 .home-button {
     color: white;
+    margin-top: 20px !important;
     text-decoration: none;
     padding: 10px 20px;
     border: 2px solid white;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -467,4 +478,62 @@ video.feature-video {
     flex: 1;
     display: flex;
     align-items: center;
+}
+
+.arrow {
+    position: relative;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transform: translate3d(0, 0, 0);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.15s ease;
+}
+
+.arrow.left-arrow i,
+.arrow.right-arrow i {
+    position: absolute;
+    width: 50px;
+    height: 5px;
+    background: #fff;
+    border-radius: 2.5px;
+    transition: all 0.15s ease;
+}
+
+.arrow.left-arrow i:first-child {
+    transform-origin: 0% 50%;
+    transform: translate(0, -1px) rotate(40deg);
+}
+.arrow.left-arrow i:last-child {
+    transform-origin: 0% 50%;
+    transform: translate(0, 1px) rotate(-40deg);
+}
+.arrow.right-arrow i:first-child {
+    transform-origin: 100% 50%;
+    transform: translate(0, 1px) rotate(40deg);
+}
+.arrow.right-arrow i:last-child {
+    transform-origin: 100% 50%;
+    transform: translate(0, -1px) rotate(-40deg);
+}
+
+.arrow:hover i:first-child {
+    transform: translate(0, -1px) rotate(30deg);
+}
+.arrow:hover i:last-child {
+    transform: translate(0, 1px) rotate(-30deg);
+}
+
+.arrow:active i:first-child {
+    transform: translate(1px, -1px) rotate(25deg);
+}
+.arrow:active i:last-child {
+    transform: translate(1px, 1px) rotate(-25deg);
+}
+.arrow[data-state="disabled"] {
+    opacity: 0.3;
+    cursor: default;
 }

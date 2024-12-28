@@ -1,7 +1,7 @@
 import Header from './header';
 import { useState, useEffect } from 'react';
 
-export default function Debate() {
+export default function Udem() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const images = [
@@ -37,30 +37,28 @@ export default function Debate() {
     return (
         <div>
             <Header />
-            <section>
-                <h2>UDEM Website</h2>
-            </section>
             <section className="carousel">
                 <div className="carousel-container">
                     <button className="arrow left-arrow" onClick={prevImage}>
-                        &lt;
+                        <i></i><i></i>
                     </button>
                     <div className="tilt">
                         <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="carousel-image" />
                     </div>
                     <button className="arrow right-arrow" onClick={nextImage}>
-                        &gt;
+                        <i></i><i></i>
                     </button>
                 </div>
             </section>
             <section>
+                <a href="https://www.femmesetdroitudem.com/" className="thing">Check out the site</a>
                 <h2>Technologies Utilized</h2>
                 <h3>JavaScript · CSS · HTML · Next.js · Node.js · Vercel</h3>
                 <a href="https://github.com/lucasadilla/UDEMDROIT" className="home-button">GitHub Repository</a>
             </section>
             <footer>
                 <div className="footer-content">
-                    <a href="https://www.linkedin.com/in/lucas-pentland-hyde-aa7130240/" className="footer-link"
+                <a href="https://www.linkedin.com/in/lucas-pentland-hyde-aa7130240/" className="footer-link"
                        target="_blank">
                         <img src="/images/linkedin-black-logo-icon.png" alt="LinkedIn" className="footer-icon"/>
                     </a>

@@ -1,9 +1,25 @@
 import Header from './header';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function BitPass() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const images = [
+        { src: "/images/BITPASS.png", text: "A password generation and analysis tool made in 24 hours for ConUHacks 2022." },
+        { src: "/images/bitpass3.png", text: "Evaluate the strength and security of passwords against brute force attacks." },
+        { src: "/images/bitpass2.png", text: "Generate complex passwords with varying lengths and character sets." },
+        { src: "/images/bitpass4.png", text: "Explore factors that contribute to password strength and security." },
+    ];
+
+    const nextImage = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    };
+
+    const prevImage = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    };
+
     useEffect(() => {
-        // Initialize VanillaTilt
         if (typeof window !== 'undefined') {
             const VanillaTilt = require('vanilla-tilt');
             VanillaTilt.init(document.querySelectorAll('.tilt'), {
@@ -20,47 +36,25 @@ export default function BitPass() {
 
     return (
         <div>
-            <Header />
-            <section>
-                <h2>BITPASS</h2>
-                <div className="subheader">
-                    <h4>Password generation and analysis tool</h4>
-                </div>
-            </section>
-            <section className="content-section">
-                <div className="item-container">
-                    <div className="tilt">
-                        <img src="/images/BITPASS.png" alt="debate" className="feature-image" />
+            <Header/>
+            <section className="carousel">
+                <div className="carousel-container">
+                    <button className="arrow left-arrow" onClick={prevImage}>
+                        <i></i><i></i>
+                    </button>
+                    <div className="image-text-container">
+                        <div className="tilt">
+                            <img
+                                src={images[currentIndex].src}
+                                alt={`Slide ${currentIndex + 1}`}
+                                className="carousel-image"
+                            />
+                        </div>
+                        <p className="image-description">{images[currentIndex].text}</p>
                     </div>
-                    <div className="text-box">
-                        <h4>This project was made in 24 hours for ConUHacks 2022</h4>
-                    </div>
-                </div>
-                <div className="item-container">
-                    <div className="tilt">
-                        <img src="/images/bitpass3.png" alt="instigate" className="feature-image" />
-                    </div>
-                    <div className="text-box">
-                        <h4>Evaluate the strength and security of passwords against brute force attacks.</h4>
-                    </div>
-                </div>
-                <div className="item-container">
-                    <div className="tilt">
-                        <img src="/images/bitpass2.png" alt="deliberate" className="feature-image" />
-                    </div>
-                    <div className="text-box">
-                        <h4>Generate passwords with different levels of complexity, including varying lengths and
-                            character sets.</h4>
-                    </div>
-                </div>
-                <div className="item-container">
-                    <div className="tilt">
-                        <img src="/images/bitpass4.png" alt="deliberate" className="feature-image" />
-                    </div>
-                    <div className="text-box">
-                        <h4>Explore the factors that contribute to password strength and security as you utilize our
-                            tool.</h4>
-                    </div>
+                    <button className="arrow right-arrow" onClick={nextImage}>
+                        <i></i><i></i>
+                    </button>
                 </div>
             </section>
             <section>
@@ -70,7 +64,8 @@ export default function BitPass() {
             </section>
             <footer>
                 <div className="footer-content">
-                    <a href="https://www.linkedin.com/in/lucas-pentland-hyde-aa7130240/" className="footer-link" target="_blank">
+                    <a href="https://www.linkedin.com/in/lucas-pentland-hyde-aa7130240/" className="footer-link"
+                       target="_blank">
                         <img src="/images/linkedin-black-logo-icon.png" alt="LinkedIn" className="footer-icon"/>
                     </a>
                     <a href="https://github.com/lucasadilla" className="footer-link" target="_blank">

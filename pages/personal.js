@@ -8,11 +8,14 @@ export default function Personal() {
                 <a href="/" className="home-button">Lucas Pentland-Hyde</a>
             </Header>
             <section>
-                <h4>Tried new front-end development methods, such as:</h4>
-                <h4>Creating animation using CSS and JavaScript.</h4>
+                <h4>Tried to keep this site as simple as possible while adding some new css features, such as:</h4>
+                <h3>A circular cursor that inverses anything it is hovering over.</h3>
+                <h3>A typewriter effect.</h3>
+                <h3>Arrows that fold when hovered over.</h3>
+
             </section>
             <section>
-                <h2>Technologies Utilized</h2>
+            <h2>Technologies Utilized</h2>
                 <h3>JavaScript · CSS · HTML · Next.js · Node.js · Vercel</h3>
                 <a href="https://github.com/lucasadilla/Personal-website" className="home-button">GitHub Repository</a>
             </section>

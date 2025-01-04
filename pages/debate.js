@@ -1,9 +1,24 @@
 import Header from './header';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Debate() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const images = [
+        { src: "/images/Capture4.JPG", text: "Write down a controversial opinion in under 200 characters." },
+        { src: "/images/Capture3.JPG", text: "Respond to an opinion you disagree with in under 200 characters." },
+        { src: "/images/Capture2.JPG", text: "Vote on others' disagreements and decide the winner." },
+    ];
+
+    const nextImage = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    };
+
+    const prevImage = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    };
+
     useEffect(() => {
-        // Initialize VanillaTilt
         if (typeof window !== 'undefined') {
             const VanillaTilt = require('vanilla-tilt');
             VanillaTilt.init(document.querySelectorAll('.tilt'), {
@@ -20,26 +35,26 @@ export default function Debate() {
 
     return (
         <div>
-            <Header />
-            <section>
-                <h2>BICKER</h2>
-                <div className="subheader">
-                    <h4>The game of instigating, debating, and deliberating!</h4>
+            <Header/>
+            <section className="carousel">
+                <div className="carousel-container">
+                    <button className="arrow left-arrow" onClick={prevImage}>
+                        <i></i><i></i>
+                    </button>
+                    <div className="image-text-container">
+                        <div className="tilt">
+                            <img
+                                src={images[currentIndex].src}
+                                alt={`Slide ${currentIndex + 1}`}
+                                className="carousel-image"
+                            />
+                        </div>
+                        <p className="image-description">{images[currentIndex].text}</p>
+                    </div>
+                    <button className="arrow right-arrow" onClick={nextImage}>
+                        <i></i><i></i>
+                    </button>
                 </div>
-            </section>
-            <section>
-                <div className="tilt">
-                    <img src="/images/Capture4.JPG" alt="debate" className="feature-image" />
-                </div>
-                <h4>Start off by writing down a controversial opinion of yours in under 200 characters.</h4>
-                <div className="tilt">
-                    <img src="/images/Capture3.JPG" alt="instigate" className="feature-image" />
-                </div>
-                <h4>Find an opinion you disagree with and respond in under 200 characters.</h4>
-                <div className="tilt">
-                    <img src="/images/Capture2.JPG" alt="deliberate" className="feature-image" />
-                </div>
-                <h4>Vote on other's disagreements.</h4>
             </section>
             <section>
                 <h2>Technologies Utilized</h2>

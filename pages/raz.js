@@ -1,18 +1,18 @@
 import Header from './header';
 import { useState, useEffect } from 'react';
 
-export default function Debate() {
+export default function Raz() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const images = [
-        "/images/index.png",
-        "/images/index2.png",
-        "/images/pub.png",
-        "/images/media.png",
-        "/images/book.png",
-        "/images/contact.png",
-        "/images/invite.png",
-        "/images/search.png"
+        { src: "/images/index.png", text: "The front page." },
+        { src: "/images/index2.png", text: "What the user sees after scrolling down." },
+        { src: "/images/pub.png", text: "100+ academic publications by Amir Raz." },
+        { src: "/images/media.png", text: "Embedded video, audio, and article interviews" },
+        { src: "/images/book.png", text: "Book descriptions, images, and links to all of his published books" },
+        { src: "/images/contact.png", text: "A contact form that sends the user's provided information directly via email." },
+        { src: "/images/invite.png", text: "Invite applications to Amir Raz's services" },
+        { src: "/images/search.png", text: "A working search engine which contains every piece of content from the site and organises it based on type." }
     ];
 
     const nextImage = () => {
@@ -40,14 +40,23 @@ export default function Debate() {
 
     return (
         <div>
-            <Header />
+            <Header/>
+            <a href="www.amiraz.com" className="thing">A personal site commissioned by Dr. Amir Raz, showcasing works,
+                services, and providing a way to contact him.</a>
             <section className="carousel">
                 <div className="carousel-container">
                     <button className="arrow left-arrow" onClick={prevImage}>
                         <i></i><i></i>
                     </button>
-                    <div className="tilt">
-                        <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="carousel-image" />
+                    <div className="image-text-container">
+                        <div className="tilt">
+                            <img
+                                src={images[currentIndex].src}
+                                alt={`Slide ${currentIndex + 1}`}
+                                className="carousel-image"
+                            />
+                        </div>
+                        <p className="image-description">{images[currentIndex].text}</p>
                     </div>
                     <button className="arrow right-arrow" onClick={nextImage}>
                         <i></i><i></i>
@@ -55,7 +64,6 @@ export default function Debate() {
                 </div>
             </section>
             <section>
-                <a href="www.amiraz.com" className="thing">Check out the site</a>
                 <h2>Technologies Utilized</h2>
                 <h3>JavaScript · CSS · HTML · Next.js · Node.js · Vercel</h3>
                 <a href="https://github.com/lucasadilla/raz" className="home-button">GitHub Repository</a>

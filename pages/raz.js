@@ -41,7 +41,7 @@ export default function Raz() {
     return (
         <div>
             <Header/>
-            <a href="www.amiraz.com" className="thing">A personal site commissioned by Dr. Amir Raz, showcasing works,
+            <a href="https://www.amirraz.com/" className="thing">A personal site commissioned by Dr. Amir Raz, showcasing works,
                 services, and providing a way to contact him.</a>
             <section className="carousel">
                 <div className="carousel-container">

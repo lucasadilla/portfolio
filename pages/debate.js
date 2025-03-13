@@ -35,7 +35,7 @@ export default function Debate() {
 
     return (
         <div>
-            <Header/>
+            <Header />
             <section className="carousel">
                 <div className="carousel-container">
                     <button className="arrow left-arrow" onClick={prevImage}>
@@ -63,8 +63,7 @@ export default function Debate() {
             </section>
             <footer>
                 <div className="footer-content">
-                    <a href="https://www.linkedin.com/in/lucas-pentland-hyde-aa7130240/" className="footer-link"
-                       target="_blank">
+                    <a href="https://www.linkedin.com/in/lucas-pentland-hyde-aa7130240/" className="footer-link" target="_blank">
                         <img src="/images/linkedin-black-logo-icon.png" alt="LinkedIn" className="footer-icon"/>
                     </a>
                     <a href="https://github.com/lucasadilla" className="footer-link" target="_blank">

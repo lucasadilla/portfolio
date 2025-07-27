@@ -5,10 +5,10 @@ export default function Debate() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const images = [
-        { src: "/images/bicker3.png", text: "Write down a controversial opinion in under 200 characters." },
-        { src: "/images/bicker2.png", text: "Respond to an opinion you disagree with in under 200 characters." },
-        { src: "/images/bicker4.png", text: "Vote on others' disagreements and decide the winner." },
-        { src: "/images/bicker5.png", text: "View other debates and their vote counts." },
+        { src: "/images/bicker3.PNG", text: "Write down a controversial opinion in under 200 characters." },
+        { src: "/images/bicker2.PNG", text: "Respond to an opinion you disagree with in under 200 characters." },
+        { src: "/images/bicker4.PNG", text: "Vote on others' disagreements and decide the winner." },
+        { src: "/images/bicker5.PNG", text: "View other debates and their vote counts." },
     ];
 
     const nextImage = () => {

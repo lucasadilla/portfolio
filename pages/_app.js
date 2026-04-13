@@ -2,20 +2,34 @@ import '../styles/globals.css';
 import { useEffect } from 'react';
 import { Analytics } from "@vercel/analytics/react";
 import Head from 'next/head';
+import TopographicCanvas from '../components/TopographicCanvas';
+import { isFinePointer } from '../lib/device';
 
 function MyApp({ Component, pageProps }) {
     useEffect(() => {
-        // Cursor setup
+        if (!isFinePointer()) {
+            document.body.classList.add('no-custom-cursor');
+            return undefined;
+        }
+
+        document.body.classList.remove('no-custom-cursor');
+
         const cursor = document.createElement('div');
         cursor.classList.add('cursor');
         document.body.appendChild(cursor);
 
+        const interactiveSelector =
+            'a, button, input, textarea, select, label[for], [role="button"], [tabindex]:not([tabindex="-1"])';
+
         const moveCursor = (e) => {
-            cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+            cursor.style.setProperty('--cursor-x', String(e.clientX));
+            cursor.style.setProperty('--cursor-y', String(e.clientY));
+            const hit = document.elementFromPoint(e.clientX, e.clientY);
+            const over = hit && hit.closest(interactiveSelector);
+            cursor.classList.toggle('cursor--hover', Boolean(over));
         };
 
         document.addEventListener('mousemove', moveCursor);
-
 
         const selectionStyles = [
             { backgroundColor: "#fff100", color: "#000" },
@@ -59,18 +73,33 @@ function MyApp({ Component, pageProps }) {
         };
     }, []);
 
+    useEffect(() => {
+        return () => {
+            document.body.classList.remove('no-custom-cursor');
+        };
+    }, []);
+
     return (
         <>
             <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
                 <title>Lucas Pentland-Hyde</title>
             </Head>
-            <Component {...pageProps} />
-            <Analytics />
+            <div className="app-shell">
+                <div className="scene-backdrop" aria-hidden="true">
+                    <TopographicCanvas />
+                    <div className="topo-grain" />
+                    <div className="topo-vignette" />
+                </div>
+                <div className="app-shell-content">
+                    <Component {...pageProps} />
+                    <Analytics />
+                </div>
+            </div>
         </>
     );
 }

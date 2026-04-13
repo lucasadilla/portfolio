@@ -11,7 +11,7 @@ export default function Projects() {
                 <ul className="projects-page-list">
                     {PROJECT_INDEX_LINKS.map(({ href, label, slug }) => (
                         <li key={slug}>
-                            <Link href={href} legacyBehavior>
+                            <Link href={href} prefetch={false} legacyBehavior>
                                 <a className="home-button small-button projects-page-link">{label}</a>
                             </Link>
                         </li>

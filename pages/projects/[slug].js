@@ -31,10 +31,16 @@ export async function getServerSideProps({ params, res }) {
         return { notFound: true };
     }
     res.setHeader('Cache-Control', 'private, no-store, must-revalidate');
+
+    /* require() keeps fs/crypto out of the client bundle */
+    const { withFinalGalleryImageUrls } = require('../../lib/finalizeProjectGallery');
+    const serialized = serializeProjectForPage(project);
+    const projectProps = withFinalGalleryImageUrls(serialized, project);
+
     return {
         props: {
             slug,
-            project: serializeProjectForPage(project),
+            project: projectProps,
         },
     };
 }
@@ -68,9 +74,7 @@ export default function ProjectPage({ project }) {
                     {project.intro.text}
                 </a>
             ) : null}
-            {project.images?.length ? (
-                <ProjectImageStack images={project.images} imageCacheBust={project.imageCacheBust} />
-            ) : null}
+            {project.images?.length ? <ProjectImageStack images={project.images} /> : null}
             <section>
                 <h2>Technologies Utilized</h2>
                 <TechStack techs={project.techs} />

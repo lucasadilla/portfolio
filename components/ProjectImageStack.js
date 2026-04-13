@@ -1,9 +1,15 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { shouldInitImageTilt } from '../lib/device';
-import { galleryImageSrc } from '../lib/galleryImageSrc';
 
-export default function ProjectImageStack({ images, imageCacheBust }) {
+/**
+ * `images[].src` must already be the final URL (including ?v=…) from getServerSideProps.
+ */
+export default function ProjectImageStack({ images }) {
     const sectionRef = useRef(null);
+    const imagesContentKey = useMemo(
+        () => images.map((x) => `${x.src}\0${x.text ?? ''}\0${x.alt ?? ''}`).join('\n'),
+        [images]
+    );
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -27,7 +33,7 @@ export default function ProjectImageStack({ images, imageCacheBust }) {
         );
         slides.forEach((el) => io.observe(el));
         return () => io.disconnect();
-    }, [images.length]);
+    }, [imagesContentKey]);
 
     useEffect(() => {
         if (!shouldInitImageTilt()) return;
@@ -42,7 +48,7 @@ export default function ProjectImageStack({ images, imageCacheBust }) {
             perspective: 1000,
             gyroscope: true,
         });
-    }, [images.length]);
+    }, [imagesContentKey]);
 
     return (
         <section ref={sectionRef} className="project-stack-section" aria-label="Project gallery">
@@ -51,7 +57,7 @@ export default function ProjectImageStack({ images, imageCacheBust }) {
                     const imageLeft = i % 2 === 0;
                     return (
                         <article
-                            key={i}
+                            key={`${item.src}-${i}`}
                             className={`project-slide ${imageLeft ? 'project-slide--image-left' : 'project-slide--image-right'}`}
                             style={{ '--slide-i': i }}
                         >
@@ -61,8 +67,7 @@ export default function ProjectImageStack({ images, imageCacheBust }) {
                                 >
                                     <div className="tilt">
                                         <img
-                                            key={galleryImageSrc(item.src, imageCacheBust)}
-                                            src={galleryImageSrc(item.src, imageCacheBust)}
+                                            src={item.src}
                                             alt={item.alt || `Project still ${i + 1}`}
                                             className="project-stack-image"
                                         />

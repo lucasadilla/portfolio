@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
-/** Changes when lib/projectsContent.js changes → new gallery ?v= after `next dev` restart or build */
+/** Baked into client bundle at build time; changes when lib/projectsContent.js changes */
 function projectsFileFingerprint() {
     try {
         const p = path.join(__dirname, 'lib', 'projectsContent.js');
@@ -21,7 +21,7 @@ const nextConfig = {
         NEXT_PUBLIC_IMAGE_REVISION:
             process.env.NEXT_PUBLIC_IMAGE_REVISION ||
             process.env.VERCEL_DEPLOYMENT_ID ||
-            (process.env.NODE_ENV === 'development' ? `dev-${projectsFileFingerprint()}` : ''),
+            projectsFileFingerprint(),
     },
     async headers() {
         return [
@@ -33,7 +33,7 @@ const nextConfig = {
     },
     async redirects() {
         /* Top-level → /projects/... ; keep in sync with PROJECT_SLUGS in lib/projectsContent.js */
-        const slugs = ['bitpass', 'portify', 'portfolio', 'debate', 'raz', 'udem'];
+        const slugs = ['bitpass', 'portify', 'portfolio', 'bicker', 'raz', 'udem'];
         const toProject = slugs.map((slug) => ({
             source: `/${slug}`,
             destination: `/projects/${slug}`,
@@ -41,6 +41,8 @@ const nextConfig = {
         }));
         return [
             ...toProject,
+            { source: '/debate', destination: '/projects/bicker', permanent: true },
+            { source: '/projects/debate', destination: '/projects/bicker', permanent: true },
             { source: '/personal', destination: '/projects/portfolio', permanent: true },
             { source: '/projects/personal', destination: '/projects/portfolio', permanent: true },
         ];

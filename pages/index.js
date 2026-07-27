@@ -6,10 +6,15 @@ export default function Home() {
         <div className="page-container">
             <main className="main-content">
                 <Header />
-                <h3 className="subtitle">Computer Science Student · Based in Montreal</h3>
-                <Link href="/projects" className="projects-hub-box">
-                    Projects
-                </Link>
+                <h3 className="subtitle">AI, Cloud & Full-Stack Developer · Based in Montreal</h3>
+                <div className="hub-cta-row">
+                    <Link href="/projects" className="projects-hub-box">
+                        Projects
+                    </Link>
+                    <Link href="/experience" className="projects-hub-box">
+                        Experience
+                    </Link>
+                </div>
             </main>
             <footer>
                 <div className="footer-content">

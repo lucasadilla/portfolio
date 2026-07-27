@@ -33,7 +33,7 @@ const nextConfig = {
     },
     async redirects() {
         /* Top-level → /projects/... ; keep in sync with PROJECT_SLUGS in lib/projectsContent.js */
-        const slugs = ['bitpass', 'portify', 'portfolio', 'bicker', 'raz', 'udem'];
+        const slugs = ['bitpass', 'portify', 'portfolio', 'bicker', 'raz', 'udem', 'clipper'];
         const toProject = slugs.map((slug) => ({
             source: `/${slug}`,
             destination: `/projects/${slug}`,

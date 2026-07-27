@@ -117,6 +117,11 @@ const TECH_META = {
         url: 'https://oauth.net/2/',
         onDarkBg: true,
     },
+    stripe: {
+        file: 'stripe-original.svg',
+        name: 'Stripe',
+        url: 'https://stripe.com',
+    },
 };
 
 export default function TechStack({ techs }) {

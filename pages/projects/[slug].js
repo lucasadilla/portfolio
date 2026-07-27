@@ -9,7 +9,7 @@ function ProjectFooter() {
     return (
         <footer>
             <div className="footer-content">
-                <a href="https://www.linkedin.com/in/lucas-pentland-hyde-aa7130240/" className="footer-link" target="_blank">
+                <a href="https://www.linkedin.com/in/lucas-pentland-hyde/" className="footer-link" target="_blank">
                     <img src="/images/linkedin-black-logo-icon.png" alt="LinkedIn" className="footer-icon" />
                 </a>
                 <a href="https://github.com/lucasadilla" className="footer-link" target="_blank">
@@ -48,38 +48,42 @@ export async function getServerSideProps({ params, res }) {
 export default function ProjectPage({ project }) {
     if (project.variant === 'portfolio') {
         return (
-            <div>
+            <div className="project-detail">
                 <Header breadcrumbs={projectPageBreadcrumbs(project.breadcrumbLabel)} />
-                <section>
-                    <h4>Tried to keep this site as simple as possible while adding some new css features, such as:</h4>
-                    <h3>A circular cursor that inverses anything it is hovering over.</h3>
-                    <h3>A typewriter effect.</h3>
-                    <h3>Arrows that fold when hovered over.</h3>
-                </section>
-                <section>
-                    <h2>Technologies Utilized</h2>
-                    <TechStack techs={project.techs} />
-                    <a href={project.github} className="home-button">GitHub Repository</a>
-                </section>
+                <main className="project-detail-main">
+                    <section className="project-detail-notes">
+                        <h4>Tried to keep this site as simple as possible while adding some new css features, such as:</h4>
+                        <h3>A circular cursor that inverses anything it is hovering over.</h3>
+                        <h3>A typewriter effect.</h3>
+                        <h3>Arrows that fold when hovered over.</h3>
+                    </section>
+                    <section className="project-detail-tech">
+                        <h2>Technologies Utilized</h2>
+                        <TechStack techs={project.techs} />
+                        <a href={project.github} className="home-button">GitHub Repository</a>
+                    </section>
+                </main>
                 <ProjectFooter />
             </div>
         );
     }
 
     return (
-        <div>
+        <div className="project-detail">
             <Header breadcrumbs={projectPageBreadcrumbs(project.breadcrumbLabel)} />
-            {project.intro ? (
-                <a href={project.intro.href} className="thing">
-                    {project.intro.text}
-                </a>
-            ) : null}
-            {project.images?.length ? <ProjectImageStack images={project.images} /> : null}
-            <section>
-                <h2>Technologies Utilized</h2>
-                <TechStack techs={project.techs} />
-                <a href={project.github} className="home-button">GitHub Repository</a>
-            </section>
+            <main className="project-detail-main">
+                {project.intro ? (
+                    <a href={project.intro.href} className="thing">
+                        {project.intro.text}
+                    </a>
+                ) : null}
+                {project.images?.length ? <ProjectImageStack images={project.images} /> : null}
+                <section className="project-detail-tech">
+                    <h2>Technologies Utilized</h2>
+                    <TechStack techs={project.techs} />
+                    <a href={project.github} className="home-button">GitHub Repository</a>
+                </section>
+            </main>
             <ProjectFooter />
         </div>
     );
